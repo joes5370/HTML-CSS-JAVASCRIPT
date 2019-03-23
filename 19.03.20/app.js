@@ -27,3 +27,7 @@ app.get('/css1', function(req, res) {
 app.get('/practice4', function(req, res) {
   res.sendfile("practice.html");
 });
+
+app.get('/review', function(req, res){
+  res.sendfile("review.html");
+});
