@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<style>
+  /* css */
+</style>
+
+<body>
+  <!-- html -->
+  <input type="text" id="inputText">
+  <input type="text" id="Text1">
+  <input type="button" value="버튼" id="button1">
+  <input type="button" value="확인" id="button2">
+</body>
+
+<script>
+  // JavaScript
+    document.getElementById("button1").addEventListener('click', function() {
+    var a = document.getElementById("inputText").value
+    var b = document.getElementById("Text1").value
+
+    if(Number(a)+Number(b) >=10){
+      alert("10이상")
+    }else{
+      alert("10미만")
+    }
+
+  });
+    document.getElementById("button2").addEventListener('click',function() {
+    var c = document.getElementById("inputText").value
+    var d = document.getElementById("Text1").value
+    if(Number(c) <0 && Number(d) < 0){
+      alert("양수만 입력해 주세요!!!")
+    }else {
+      alert(Number(c)*Number(d));
+    }
+  
+    });
+
+  document.getElementById("button2").addEventListener('click', function() {
+    alert(document.getElementById("Text1").value);
+  });
+</script>
+
+
+</html>
