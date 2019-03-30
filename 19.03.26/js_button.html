@@ -9,8 +9,8 @@
 <body>
   <input type="text" id = "p1">
   <input type="text" id = "p2">
-  <input type="button" value="눌러">
-  <input type="button" value="확인">
+  <input type="button" value="눌러" id = "p3">
+  <input type="button" value="확인" id = "p4">
 
 
   <!-- <input type="text" id="inputText">
@@ -24,6 +24,9 @@
   document.getElementById("p1").value =a;
   document.getElementById("p2").value ="비밀번호 입력해"
 
+  document.getElementById("p3").addEventListener('click',function() {
+    alert(document.getElementById("p1").value)
+  });
 
   // var a = "아이디를 입력하던지 말던지";
   // document.getElementById("inputText").value = a;
