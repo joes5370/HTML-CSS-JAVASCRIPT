@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <span id="loginFormArea"></span>
+  <span id="formCreateArea"><input type="button" id="button" value="로그인 양식 띄우기"></span>
+  <script>
+    document.getElementById("button").addEventListener('click', function() {
+      document.getElementById('loginFormArea').innerHTML =
+        'ID : <input type="text">' + '<br>PASSWORD : <input type="text">' +
+        '<br><input type="button" value="로그인">' + '<input type="button" value="뒤로가기">'
+      document.getElementById('formCreateArea').innerHTML = '';
+    })
+  </script>
+
+
+</body>
+
+</html>
