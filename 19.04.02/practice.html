@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+
+  <span id='loginForm'></span>
+  <span id='Form'><input type="button" id='button' value="로그인 양식"></span>
+  <script>
+    document.getElementById('button').addEventListener('click', function() {
+      document.getElementById('loginForm').innerHTML =
+      'ID : <input type="text"> <br>PASSWORD : <input type="password">'
+      +'<br><input type = "button" value="로그인">'
+      +'<input type = "button" value="확인">'
+      document.getElementById('Form').innerHTML = " ";
+      
+    })
+
+
+  </script>
+
+</body>
+
+</html>

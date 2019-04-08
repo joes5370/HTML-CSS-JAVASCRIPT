@@ -25,3 +25,7 @@ app.get('/h3', function(req, res) {
 app.get('/h4', function(req, res) {
   res.sendfile("control.html");
 });
+
+app.get('/h5', function(req, res) {
+  res.sendfile("practice.html");
+});
