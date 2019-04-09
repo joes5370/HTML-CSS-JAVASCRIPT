@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <script>
+    var arr5 = [];
+    var arr6 = [];
+    var arr7 = [];
+    var arr8 = [];
+
+    for (var i = 0; i < 12; i++) {
+      arr5[i] = i % 2
+    }
+
+    for (var i = 0; i < 12; i++) {
+      arr6[i] = i % 4
+    }
+
+    var t = "";
+    for (var i = 0; i < 5; i++) {
+      t = t + "text"
+      arr7[i] = t;
+    }
+    // for(var i =0;i<5;i++){
+    //   arr7[i] = "";
+    //   for(var j=0;j<i+1;j++){
+    //     arr7[i]= arr7[i]+"text";
+    //   }
+    // }
+
+    var a = 1;
+    for (var i = 0; i < 8; i++) {
+      arr8[i] = a;
+      a = a*10;
+    }
+
+    console.log(arr5);
+    console.log(arr6);
+    console.log(arr7);
+    console.log(arr8);
+  </script>
+</body>
+</html>
