@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style>
+    .b {
+      color :green;
+      font-style : overline;
+    }
+    .bb{
+      color : grey;
+      font-style : lowercase;
+    }
+    .bbb{
+      color : red;
+      font-style : underline;
+    }
+    #sp {
+      color : blue;
+      font-style : capitalize
+    }
+  </style>
+</head>
+
+<body>
+  <div class="b">
+  1번 0<input type="radio" name="rB">
+  1<input type="radio" name="rB">
+  2<input type="radio" name="rB">
+  3<input type="radio" name="rB">
+  4<input type="radio" name="rB">
+  가중치<input type="text" id="one">
+  </div>
+  <div class="bb">
+    2번 0<input type="radio" name="rB2" class="b">
+    1<input type="radio" name="rB2">
+    2<input type="radio" name="rB2">
+    3<input type="radio" name="rB2">
+    4<input type="radio" name="rB2">
+    가중치<input type="text" id="two">
+  </div>
+  <div class="bbb">
+    3번 0<input type="radio" name="rB3" class="b">
+    1<input type="radio" name="rB3">
+    2<input type="radio" name="rB3">
+    3<input type="radio" name="rB3">
+    4<input type="radio" name="rB3">
+    가중치<input type="text" id="three">
+  </div>
+  <span id="sp"></span>
+  <br>
+  <input type="button" id="b" value="계산">
+  <script>
+    document.getElementById("b").addEventListener('click', function() {
+      var rBs = document.getElementsByName('rB')
+      var rBs2 = document.getElementsByName('rB2')
+      var rBs3 = document.getElementsByName('rB3')
+      var oneV = Number(document.getElementById('one').value);
+      var twoV = Number(document.getElementById('two').value);
+      var threeV = Number(document.getElementById('three').value;
+      var rBsC;
+      var rBs2C;
+      var rBs3C;
+      for (var i = 0; i < rBs.length; i++) {
+        if (rBs[i].checked == true) {
+          rBsC = i;
+        }
+      }
+      for (var i = 0; i < rBs2.length; i++) {
+        if (rBs2[i].checked == true) {
+          rBs2C = i;
+        }
+      }
+      for (var i = 0; i < rBs3.length; i++) {
+        if (rBs3[i].checked == true) {
+          rBs3C = i;
+        }
+      }
+      var total = rBsC * oneV + rBs2C * twoV + rBs3C * threeV;
+      // `${rBsC}x${oneV} + ${rBs2C}x${twoV} + ${rBs3C} x ${threeV} = ${total}`
+      document.getElementById('sp').innerHTML = rBsC + "X" + oneV + "+" + rBs2C + "X" + twoV + "+" + rBs3C + "X" + threeV + "=" + total;
+    })
+  </script>
+</body>
+
+</html>
