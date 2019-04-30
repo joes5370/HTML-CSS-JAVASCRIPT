@@ -42,3 +42,7 @@ app.get('/practice2', function (req, res) {
 app.get('/practice3', function (req, res) {
   res.sendfile("writing.html");
 });
+
+app.get('/practice3', function (req, res) {
+  res.sendfile("writing.html");
+});

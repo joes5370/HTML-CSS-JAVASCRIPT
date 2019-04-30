@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  숫자1 <input type="text" id="num">;
+  <br>
+  숫자2 <input type="text" id="num2">;
+  <br>
+  <input type="button" id="btn" value="계산">
+  <br>
+  <span id="even"></span> <br>
+
+  횟수<span id="cnt"></span>
+  <br>
+  총합 <span id="sum"></span>
+
+
+</body>
+
+<script>
+  var cnt = 0;
+  var sum = 0;
+  document.getElementById("btn").addEventListener('click', function() {
+    var one = Number(document.getElementById("num").value);
+    var two = Number(document.getElementById("num2").value);
+    var re = one * two;
+
+    cnt++
+
+    document.getElementById("cnt").innerHTML = cnt;
+    document.getElementById("even").innerHTML += `${one}x${two}=${re}<br>`
+
+    sum += re;
+    document.getElementById("sum").innerHTML = sum;
+
+  })
+</script>
+
+</html>
