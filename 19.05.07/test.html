@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <input type="text" id="one" value="">
+  <input type="text" id="two" value="">
+  <input type="text" id="three" value=""><br>
+
+  <span id="span"></span>
+  <br>
+  <br>
+  <input type="button" id="Btn" value="return값으로">
+  <input type="button" id="Btn2" value="실행부에서">
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js">
+</script>
+
+<script>
+  $("#Btn").click(function(){
+    var one = Number($("#one").val())
+    var two = Number($("#two").val())
+    var three = Number($("#three").val())
+
+    $("#span").html(maxR(one,two,three,1))
+
+  })
+
+  $("#Btn2").click(function(){
+    var one = Number($("#one").val())
+    var two = Number($("#two").val())
+    var three = Number($("#three").val())
+
+    maxR(one,two,three,2)
+
+  })
+
+
+  function max(a,b,c){
+    if (a > b && a > c) {
+      $("#span").html(a)
+    }
+    else if (b > a && b > c) {
+      $("#span").html(b)
+    }
+    else if (c > a && c > b) {
+      $("#span").html(c)
+    }
+  }
+
+  function maxR(a,b,c,mode){
+    var biggest
+    if (a > b && a > c) {
+      biggest = a
+    }
+    else if (b > a && b > c) {
+      biggest = b
+    }
+    else if (c > a && c > b) {
+      biggest = c
+    }
+    if(mode == 1){
+      return biggest
+    }
+    else if(mode == 2){
+      $("#span").html(biggest)
+    }
+  }
+
+
+</script>
+
+</html>

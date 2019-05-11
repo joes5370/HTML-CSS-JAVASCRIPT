@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <select class="" id="selectBox" name="">
+    <option value="1">개</option>
+    <option value="2">닭</option>
+    <option value="3">돼지</option>
+    <option value="4">소</option>
+  </select>
+
+  <input type="button" id="Btn" value="선택">
+  <span id="result"></span>
+</body>
+
+<script src="http://code.jquery.com/jquery-latest.min.js">
+</script>
+
+<script>
+  $("#Btn").click(function() {
+    if ($("#selectBox").val() == 1) {
+      showMsg("개")
+    } else if ($("#selectBox").val() == 2) {
+      showMsg("닭")
+    } else if ($("#selectBox").val() == 3) {
+      showMsg("돼지")
+    } else if ($("#selectBox").val() == 4) {
+      showMsg("소")
+    }
+  });
+
+
+console.log(plus(3,6));
+
+
+//자바스크립트 함수 선언하기
+  function plus(a,b){
+    console.log(a+b);
+    return `your input was ${a} and ${b}`
+  }
+
+  function showMsg(animalName){
+    console.log(`${animalName}를 선택하셨습니다.`);
+    return 0;
+  }
+</script>
+
+</html>

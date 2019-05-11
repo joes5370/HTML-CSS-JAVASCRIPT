@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  이름 <input type="text" id="name"><br>
+  html <input type="text" id="html"><br>
+  java <input type="text" id="java"><br>
+  css <input type="text" id="css"><br>
+
+  <input type="button" value="계산" id="btn">
+  <input type="button" value="초기화" id="reset"> <br>
+
+
+  <span id = "span"></span><br>
+  <span id = "totalAvr"></span> <br>
+  <span id = "top"></span>
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js">
+</script>
+
+<script>
+  var avr = 0;
+  var total = 0;
+  var totalSum = 0;
+
+  var htmlAvr = 0;
+  var javaAvr = 0;
+  var cssAvr = 0;
+
+  var htmlSum = 0;
+  var cssSum = 0;
+  var javaSum = 0;
+
+  var count = 0;
+  var name;
+  var topname = 0;
+  var topAvr = 0;
+
+  $("#btn").click(function() {
+    var name = $("#name").val();
+    var html = Number($("#html").val());
+    var java = Number($("#java").val());
+    var css = Number($("#css").val());
+
+    total = html + java + css;
+    count++
+    avr = total /3;
+
+    htmlSum += html;
+    cssSum += css;
+    javaSum += java;
+    totalSum += avr;
+
+    var appendText = `이름 : ${name} / html : ${html} / java : ${java} / css : ${css} /
+      평균 : ${avr} <br>`;
+    $('#span').append(appendText);
+
+    var avgText = `평균 : html평균 : ${(htmlSum/count)} / java평균 : ${(javaSum/count)} /
+      css평균 : ${(cssSum/count)} / 전체평균 : ${(totalSum/count)}`
+    $('#totalAvr').html(avgText);
+
+    if(count == 1){
+      topAvr = avr;
+      topname = name;
+      $('#top').html(`최고점자 / 이름 : ${topname} / 평균 : ${topAvr}`)
+    }else if(avr > topAvr){
+      topAvr = avr;
+      topname = name;
+      $('#top').html(`최고점자 / 이름 : ${topname} / 평균 : ${topAvr}`)
+    }
+
+    $('#reset').click(function(){
+      var name = $("#name").val(" ");
+      var html = Number($("#html").val(" "));
+      var java = Number($("#java").val(" "));
+      var css = Number($("#css").val(" "));
+    })
+  })
+</script>
+
+</html>

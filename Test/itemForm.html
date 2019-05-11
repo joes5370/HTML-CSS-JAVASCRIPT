@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <input type="text" id="text">
+  <input type="button" id="sellBtn" value="구매"> <br>
+  <span id="span"></span>
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js"> </script>
+
+<script>
+  $("#sellBtn").click(function() {
+    var inputN = Number($("#text").val());
+
+
+    $.ajax({
+      url: `http://localhost/item?inputN=${inputN}`,
+      data: {},
+      success: function(response) {
+        console.log(response);
+        $("#span").html(response);
+      }
+
+    })
+
+
+
+  });
+</script>
+
+</html>

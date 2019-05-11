@@ -19,8 +19,11 @@
 
 
     $.ajax({
-      url: `http://localhost/getitem?price=${inputN}`,
-      data: {},
+      url: `http://localhost/getitem`,
+      data: {
+        price : inputN
+      },
+
       success: function(data) {
         console.log(data);
         $("#span").html(data);
