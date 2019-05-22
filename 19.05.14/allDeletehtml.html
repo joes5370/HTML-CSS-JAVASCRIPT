@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+
+    <input type="button" id="allDeleteBtn" value="전체삭제">
+    <span id = "span"></span>
+  </body>
+  <script src="http://code.jquery.com/jquery-latest.min.js">
+  </script>
+
+  <script>
+
+    $("#allDeleteBtn").click(function() {
+
+      $.ajax({
+        url: `/allDelete`,
+        data: {
+
+        },
+        success: function(response) {
+        console.log(response);
+        }
+      })
+    })
+
+
+  </script>
+
+
+</html>

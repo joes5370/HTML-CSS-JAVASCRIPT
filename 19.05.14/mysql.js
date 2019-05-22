@@ -1,0 +1,46 @@
+var express = require('express');
+//express를 가져다(require) 쓰겠다
+var http = require('http');
+var app = express();
+var server = http.createServer(app).listen(80);
+var mysql = require('mysql');
+// 80번 포트를 쓰겠다. ---서버를 만듬
+// 81번 포트사용시 :포트번호 를 사용
+
+//서버가 database와 쿼리를 날려서 받아온다는 선언
+var connection = mysql.createConnection({
+  host : 'localhost'
+  , port : 3306
+  , user : 'root'
+  , password : 'root'
+  , database : 'webui'
+})
+
+
+app.get('/select', function (req, res) {
+  //여기에 쿼리만 바꾸면 database에 쿼리 치는 거랑 같다.
+  var no = req.query.no
+  var selectQuery = `select * from news where no=${no}`;
+
+
+  connection.query(selectQuery,
+  function(err, rows, fields) {
+    if(err) throw err;
+    console.log(rows[0]);
+    res.send(rows[0]);
+  }
+  )
+});
+
+app.get('/form', function(req, res) {
+  res.sendfile("selectHtml.html");
+});
+
+app.get('/dbSelectTest', function(req, res) {
+  var selectQuery = `select * from news`;
+
+  connection.query(selectQuery,
+    function(err, rows, fields) {
+      res.send(rows[0]);
+    });
+});

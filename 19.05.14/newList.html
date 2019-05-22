@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<style>
+  .write{
+    height: 200px;
+    width: 200px;
+    font-size: x-large;
+  }
+  .all{
+    height: 200px;
+    width: 200px;
+    font-size: x-large;
+  }
+  .naver{
+    height: 200px;
+    width: 200px;
+    font-size: x-large;
+  }
+  .span{
+    font-size: xx-large;
+  }
+  .sample{
+    height: 200px;
+    width: 200px;
+    font-size: x-large;
+  }
+</style>
+
+
+<body>
+  <input type="button" id="write" value="글쓰기" class = "write">
+  <input type="button" id="allDeleteBtn" value="전체삭제" class ="all">
+  <input type="button" id="goNaver" value="네이버" class="naver">
+
+  <br>
+
+  <span id="upspan" class = "span"></span><br>
+
+
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js">
+</script>
+
+<script>
+  // $("#btn").click(function() {
+  console.log("qkqh");
+
+    $.ajax({
+      url: `/news`,
+      data: {},
+      success: function(response) {
+        for (var i = 0; i < response.length; i++) {
+          $("#upspan").append(`제목 : ${response[i].title} / 내용: ${response[i].text}/ 작성자 : ${response[i].writer}
+            <input type="button" value="삭제" onclick = "numberClick(${response[i].no})">
+            <input type="button" value="수정" onclick = "numberUpdata(${response[i].no})">`,"<br>")
+
+        }
+      }
+    })
+  // })
+
+  function numberUpdata(number){
+        // console.log("qkqh");
+        location.href = `http://localhost/update?${number}`
+  }
+
+
+  function numberClick(number) {
+    $.ajax({
+      url: `/delete1`,
+      data: {
+        no: number
+
+      },
+      success: function(data) {
+        console.log(data);
+        location.href = "http://localhost/newsList";
+      }
+    })
+  }
+
+  $("#write").click(function() {
+    location.href = "http://localhost/insert";
+  })
+
+  $("#allDeleteBtn").click(function() {
+
+    $.ajax({
+      url: `/allDelete`,
+      data: {
+
+      },
+      success: function(response) {
+        console.log(response);
+      }
+    })
+
+    location.href = "http://localhost/newsList";
+  })
+
+  $("#goNaver").click(function() {
+    location.href = "https://naver.com/";
+  })
+</script>
+
+</html>

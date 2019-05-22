@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    제목 : <input type="text" id="title"><br>
+    수정내 : <input type="text" id="text"> <br>
+    작성자 : <input type="text" id = "writer"> <br>
+
+    <input type="button" id="updateBtn" value="입력">
+    <input type="button" id="backBtn" value="돌아가기">
+    <br>
+  </body>
+  <script src="http://code.jquery.com/jquery-latest.min.js">
+  </script>
+
+  <script>
+    var no = location.href.split('?')[1];
+
+    $.ajax({
+      url: '/getNews',
+      type: 'get',
+      data:{
+        no: no
+      },
+      success:function(response){
+        $("#title").val(response[0].title)
+        $("#text").val(response[0].text)
+        $("#writer").val(response[0].writer)
+      }
+    })
+
+    $("#updateBtn").click(function() {
+      var title = $("#title").val()
+      var text = $("#text").val()
+      var writer = $("#writer").val()
+      var no = location.href.split('?')[1]
+
+      $.ajax({
+        url: '/updateNews',
+        data: {
+          title: title,
+          text: text,
+          writer: writer,
+          no: no
+        },
+        success: function(response) {
+
+          console.log(response);
+
+        }
+      })
+    })
+
+    $("#backBtn").click(function() {
+      location.href = "http://localhost/newsList"
+    })
+
+    // POST방식
+    //   $.ajax({
+    //     url: '/insertPost',
+    //     type:'POST',
+    //     data: {
+    //       title : title,
+    //       text : text
+    //     },
+    //     success: function(response) {
+    //     console.log(response);
+    //     }
+    //   })
+    // })
+  </script>
+
+</html>

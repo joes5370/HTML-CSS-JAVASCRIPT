@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  제목 : <input type="text" id="title"><br>
+  내용 : <input type="text" id="text"> <br>
+  작성자 : <input type="text" id = "writer"> <br>
+  <input type="button" id="insertBtn" value="입력">
+  <input type="button" id="backBtn" value="돌아가기">
+  <br>
+
+
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js">
+</script>
+
+<script>
+  $("#insertBtn").click(function() {
+    var title = $("#title").val()
+    var text = $("#text").val()
+    var writer = $("#writer").val()
+
+    $.ajax({
+      url: '/insertNews',
+      data: {
+        title: title,
+        text: text,
+        writer: writer
+      },
+      success: function(response) {
+        console.log(response);
+      }
+    })
+  })
+
+  $("#backBtn").click(function() {
+    location.href = "http://localhost/newsList"
+  })
+
+  // POST방식
+  //   $.ajax({
+  //     url: '/insertPost',
+  //     type:'POST',
+  //     data: {
+  //       title : title,
+  //       text : text
+  //     },
+  //     success: function(response) {
+  //     console.log(response);
+  //     }
+  //   })
+  // })
+</script>
+
+
+</html>

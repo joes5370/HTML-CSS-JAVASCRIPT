@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    삭제(제목) : <input type="text" id = "Dtitle"> <br>
+    <input type="button" id = "deleteBtn" value = "삭제">
+    <br>
+
+    <span id = "span"></span>
+  </body>
+  <script src="http://code.jquery.com/jquery-latest.min.js">
+  </script>
+
+  <script>
+
+    $("#deleteBtn").click(function() {
+      var dtitle = $("#Dtitle").val()
+
+
+      $.ajax({
+        url: `/delete`,
+        data: {
+          dtitle : dtitle
+        },
+        success: function(response) {
+        console.log(response);
+        }
+      })
+    })
+
+
+
+  </script>
+
+
+</html>
