@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <span id ="title"> </span><br>
+  <span id="list"></span><br>
+  편명: <input type="text" placeholder="" id="name"><br>
+  항공코드: <input type="text" placeholder="" id="code"><br>
+  출발지: <input type="text" placeholder="" id="depart"><br>
+  목적지: <input type="text" placeholder="" id="arrive"><br>
+  출발시각: <input type="text" placeholder="" id="departTime"><br>
+  도착시각: <input type="text" placeholder="" id="arriveTime"><br>
+  <input type="button" id="insert" value="입력">
+  <input type="button" id="cancel" value="취소">
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js">
+</script>
+<script>
+
+  $.ajax({
+    url: '/insertListSelect',
+    data: {},
+    success: function(response){
+      $("#title").append(`편명 / 항공코드 / 출발지 / 목적지 / 출발시각 / 도착시각`)
+      for(var i =0; i < response.length; i++){
+        $("#list").append(`${response[i].flightName} / ${response[i].aircraftCode} / ${response[i].departure} / ${response[i].arrival} / ${response[i].departTime} / ${response[i].arrivalTime}
+        <input type="button" value="삭제" onclick = "numberDelete(${response[i].no})">`,"<br>")
+      }
+    }
+  })
+
+  function numberDelete(number){
+    $.ajax({
+      url: `delete1`,
+      data: {
+        no: number
+      },
+      success: function(data){
+        console.log(data);
+        location.href = "http://localhost/insertflightList"
+      }
+    })
+  }
+
+  $("#insert").click(function(){
+    var name = $("#name").val()
+    var code = $("#code").val()
+    var depart = $("#depart").val()
+    var arrive = $("#arrive").val()
+    var departTime = $("#departTime").val()
+    var arriveTime = $("#arriveTime").val()
+
+    $.ajax({
+      url: '/insertList',
+      data: {
+        name: name,
+        code: code,
+        depart: depart,
+        arrive: arrive,
+        departTime: departTime,
+        arriveTime: arriveTime
+      },
+      success: function(response){
+        console.log(response);
+      }
+    })
+    location.href = "http://localhost/insertflightList"
+  });
+
+  $("#cancel").click(function(){
+    location.href = "http://localhost/flightListPage"
+  });
+
+</script>
+
+</html>

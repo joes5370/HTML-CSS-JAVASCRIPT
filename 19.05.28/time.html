@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <input type="text" placeholder="" id="num" value="">
+  <input type="button" id="evenbtn" value="배수증가">
+  <input type="button" id="startbtn" value="타이머시작">
+  <input type="button" id="overbtn" value="타이머종료">
+  <span id="timerSpan"></span>
+  <br>
+  <span id="evenSpan"></span>
+</body>
+<script src="http://code.jquery.com/jquery-latest.min.js">
+</script>
+
+<script type="text/javascript">
+  var cnt = 0,
+    list = 0,
+    timeInterval, evenInterval
+
+  $("#evenbtn").click(function() {
+    let value = Number($("#num").val())
+
+    setTimeout(function() {
+      evenInterval = setInterval(function() {
+        list++;
+        $("#evenSpan").append(value * list + "<br>");
+      }, 1000)
+    }, 3000);
+  })
+
+  $("#startbtn").click(function() {
+    setTimeout(function() {
+      timeInterval = setInterval(function() {
+        cnt++;
+        $("#timerSpan").html(cnt)
+      }, 1000)
+    }, 3000)
+  })
+
+  $("#overbtn").click(function() {
+    setTimeout(function() {
+      clearInterva
+
+      l(timeInterval);
+      clearInterval(evenInterval);
+    }, 3000);
+  })
+</script>
+
+</html>

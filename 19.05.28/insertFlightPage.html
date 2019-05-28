@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <span id = "title"> </span><br>
+  <span id="list"></span><br>
+  항공코드: <input type="text" placeholder="" id="code"><br>
+  항공기명: <input type="text" placeholder="" id="name"><br>
+  좌석수: <input type="text" placeholder="" id="seats"><br>
+  <input type="button" id="insert" value="입력">
+  <input type="button" id="cancel" value="취소">
+</body>
+
+<script src="http://code.jquery.com/jquery-latest.min.js">
+</script>
+<script>
+
+  $.ajax({
+    url: '/insertflightSelect',
+    data: {},
+    success: function(response){
+      $("#title").append(`항공코드 / 항공기명 / 좌석수`)
+      for(var i =0; i < response.length; i++){
+        $("#list").append(`${response[i].aircraftCode} / ${response[i].aircraftName} / ${response[i].seats}
+        <input type="button" value="삭제" onclick = "numberDelete(${response[i].no})">`,"<br>")
+      }
+    }
+  })
+
+  function numberDelete(number){
+    $.ajax({
+      url: `delete`,
+      data: {
+        no: number
+      },
+      success: function(data){
+        console.log(data);
+        location.href = "http://localhost/insertflightPage"
+      }
+    })
+  }
+
+  $("#insert").click(function(){
+    var code = $("#code").val()
+    var name = $("#name").val()
+    var seats = $("#seats").val()
+
+    $.ajax({
+      url: '/insertflight',
+      data: {
+        code: code,
+        name: name,
+        seats: seats,
+      },
+      success: function(response){
+        console.log(response);
+      }
+    })
+    location.href = "http://localhost/insertflightPage"
+  });
+
+  $("#cancel").click(function(){
+    location.href = "http://localhost/flightListPage"
+  });
+
+</script>
+
+</html>

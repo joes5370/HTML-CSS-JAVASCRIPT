@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <span id ="title"> </span><br>
+    <span id = "list"></span><br>
+    <input type="button" id = "insertList" value="항공편 입력">
+    <input type="button" id = "insertflight" value="항공기 입력">
+
+  </body>
+
+  <script src="http://code.jquery.com/jquery-latest.min.js">
+  </script>
+
+  <script>
+
+  $.ajax({
+    url: '/joinSelect',
+    data: {},
+    success: function(response){
+      $("#title").append(`편명 / 항공기명 / 좌석수 / 출발지 / 목적지 / 출발시각 / 도착시각`)
+      for(var i =0; i < response.length; i++){
+        $("#list").append(`${response[i].flightName} / ${response[i].aircraftName} / ${response[i].seats} / ${response[i].departure} / ${response[i].arrival} / ${response[i].departTime} / ${response[i].arrivalTime}`,"<br>")
+      }
+    }
+  })
+
+    $("#insertList").click(function(){
+      location.href = "http://localhost/insertflightList"
+    })
+
+    $("#insertflight").click(function(){
+      location.href = "http://localhost/insertflightPage"
+    })
+  </script>
+</html>
